@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script type="text/babel">
+        //定义组件
+        //1.工厂函数组件
+        function Mycomponent(){
+            return <h2>工厂函数组件（简单组件）</h2>
+        }
+        //2.es6类组件（复杂组件）
+        class Mycomponent2 extends React.Component{
+            render(){
+                return <h3>es6类组件（复杂组件）</h3>
+            }
+        }
+        //渲染组件标签
+        ReactDOM.render(<Mycomponent />,document.getElementById('test1'))
+        ReactDOM.render(<Mycomponent2 />,document.getElementById('test2'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <div id='test2'></div>
+    <script type="text/babel">
+    const msg = 'I LIKE YOU'
+    const myid = 'atguigu'
+    const vdom1 = <h2 id={myid.toUpperCase()}>{msg.toLowerCase()}</h2>
+    debugger
+    const vdom2 = <h3 id={myid.toLowerCase()}>{msg.toUpperCase()}</h3>
+    debugger
+    ReactDOM.render(vdom1,document.getElementById('test1'));
+    ReactDOM.render(vdom2,document.getElementById('test2'));
+    </script>
+  </body>
+</html>

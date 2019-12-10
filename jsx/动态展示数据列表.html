@@ -1,0 +1,21 @@
+<head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <script type="text/babel">
+        const names = ['jquery','zepto','angular','react','vue'];
+        //创建虚拟dom
+        const ul = (<ul>
+        {
+            names.map((name,index)=><li key={index}>{name}</li>)
+        }
+        </ul>)
+        //渲染虚拟dom
+        ReactDOM.render(ul,document.getElementById('test1'));
+    </script>
+  </body>
+</html>

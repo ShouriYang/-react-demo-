@@ -1,0 +1,91 @@
+<head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/prop-types.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script type="text/babel">
+    class App extends React.Component{
+        constructor(props){
+            super(props)
+            this.state={
+                todos: ['吃饭','睡觉','打代码']
+            }
+            this.addTodo = this.addTodo.bind(this);
+        }
+        addTodo(todo){
+            // this.state.todos.unshift(todo); 不能直接这样做
+            const {todos} = this.state;
+            todos.unshift(todo);
+            this.setState({todos});
+        }
+        render(){
+            const {todos} = this.state;
+            return(
+                <div>
+                <h1>Simple TODO List</h1> 
+                <Add count={todos.length} addTodo={this.addTodo}/>
+                <List todos={todos} />   
+                </div>
+            )
+        }
+    }
+    class Add extends React.Component{
+        constructor(props){
+            super(props)
+            this.addItem = this.addItem.bind(this)
+        }
+        addItem(){
+            //读取输入数据
+            const todo = this.input.value.trim();
+            //检查合法性
+            if(!todo){
+                return 
+            }else{
+            //添加数据项
+                this.props.addTodo(todo);
+            }
+            //清除输入框
+            this.input.value = ''
+
+
+        }
+
+        render(){
+            return(
+                <div>
+                <input type="text" ref={input => this.input = input}/> 
+                <button onClick={this.addItem}>Add #{this.props.count+1}</button>   
+                </div>
+            )
+        }
+    }
+    Add.propTypes = {
+        count: PropTypes.number.isRequired,
+        addTodo: PropTypes.func.isRequired
+    }
+    class List extends React.Component{
+        render(){
+            const {todos} = this.props
+            return(
+                <ul>
+                    {
+                        todos.map((todo,index)=>
+                            <li key={index}>{todo}</li>
+                        )
+                    }
+                </ul>
+            )
+        }
+    }
+    // List.propTypes={
+    //     todos: PropTypes.array.isRequired
+    // }
+    ReactDOM.render(<App />,document.getElementById('test1'))
+    </script>
+  </body>
+</html>
