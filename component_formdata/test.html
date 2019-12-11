@@ -1,0 +1,47 @@
+<head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/prop-types.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script type="text/babel">
+        class LoginFrom extends React.Component{
+            constructor(props){
+                super(props)
+                this.state = {
+                    pwd: ''
+                }
+                this.handleSubmit = this.handleSubmit.bind(this)
+                this.handleChange = this.handleChange.bind(this)
+            }
+            handleSubmit(event){    
+                //组织表单的默认提交行为
+                event.preventDefault()
+                //获取表单数据
+                const name = this.username.value;
+                const {pwd} =this.state
+                alert('用户输入的用户名为'+name+',密码为'+pwd)
+            }
+            handleChange(event){
+                //读取密码框的状态
+                const pwd = event.target.value
+                this.setState({pwd})
+            }
+            render(){
+                return(
+                    <form onSubmit={this.handleSubmit}>
+                        用户名：<input type="text" ref={input => this.username=input}/>
+                        密码：<input type="password" value={this.state.pwd} onChange={this.handleChange}/>
+                        <input type="submit" value="登陆" />
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<LoginFrom />,document.getElementById('test1'))
+    </script>
+  </body>
+</html>
