@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import PubSub from 'pubsub-js'
 class Main extends Component {
-    static propTypes = {
-        searchName: PropTypes.string.isRequired
-    }
     state = { 
         initView : true, //请输入关键字搜索
         loading: false,
         users: null,
         errorMsg: null //请求出错赋值
      }
-     //当组件接收到新的属性时回调
-    componentWillReceiveProps(newProps) {//指定了新的searchName然后发请求
-        const {searchName} = newProps
+     componentDidMount() {
+         //订阅消息（search）
+         PubSub.subscribe('search',(msg,searchName)=>{ //指定了新的searchName，需要请求
         //更新为状态请求中loading状态
         this.setState({
             initView:false,
@@ -45,7 +43,8 @@ class Main extends Component {
                 errorMsg:err.message
             })
         })
-    }
+         })
+     }
     render() { 
         //根据state的四个状态显示返回的内容
         const { initView,loading,users,errorMsg} = this.state
