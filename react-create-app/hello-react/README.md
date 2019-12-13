@@ -1,5 +1,5 @@
 src下的源文件为通过github提供的开发者search接口，获取到用户输入的input框关键字匹配的用户的用户名以及头像
-src-comment下的源文件为可以动态添加删除用户评论，通过input框获取用户名和评论内容
+	src-comment下的源文件为可以动态添加删除用户评论，通过input框获取用户名和评论内容
 #### 1.用react-cli实现一个可以动态添加删除评论的小组件
 
 ![](https://tva1.sinaimg.cn/large/006tNbRwgy1g9utbb70f6j31by0j443e.jpg)
