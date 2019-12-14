@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js'
 import CommentAdd from '../comment-add/comment-add'
 import CommentList from '../comment-list/comment-list'
 export default class App  extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         comments:[
-    //             {username:'Tom',content:'react太难了'},
-    //             {username:'Jack',content:'react挺好的'}
-    //         ]
-    //     }
-    // }
-    //给组件添加状态
     state = {
         comments:[
             {username:'Tom',content:'react太难了'},
             {username:'Jack',content:'react挺好的'}
         ]
+    }
+    componentDidMount() {
+      //订阅消息（deleteComment）
+      PubSub.subscribe("deleteComment",(msg,index)=>{
+        this.deleteComment(index)
+      })
     }
     //添加评论
     addComment = (comment)=>{
@@ -47,7 +44,7 @@ export default class App  extends Component {
           </header>
         <div className="container">
             <CommentAdd addComment={this.addComment} />
-            <CommentList comments={comments} deleteComment={this.deleteComment}/>
+            <CommentList comments={comments}/>
         </div>
         </div>
          );

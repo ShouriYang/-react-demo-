@@ -7,7 +7,6 @@ export default class CommentList extends Component {
     //给组件指定属性
     static propTypes = {
         comments: PropTypes.array.isRequired ,
-        deleteComment: PropTypes.func.isRequired
     }
     render() { 
         const {comments, deleteComment} = this.props;
@@ -19,7 +18,7 @@ export default class CommentList extends Component {
             <ul className="list-group">
                 {
                     comments.map((c,index)=>
-                        <CommentItem comment = {c} key={index} deleteComment={deleteComment}
+                        <CommentItem comment = {c} key={index} 
                         index={index}/>
                     )
                 }
