@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Route,NavLink } from 'react-router-dom'
+import MessageDeatil from './message-detail'
 class Message extends Component {
     state = { 
         messages:[
@@ -17,17 +19,42 @@ class Message extends Component {
              this.setState({messages})
          },1000)
      }
+     showDetails = (id)=>{
+         this.props.history.push(`/home/message/messagedetail/${id}`)
+     }
+     showDetails2 = (id)=>{
+        this.props.history.replace(`/home/message/messagedetail/${id}`)
+    }
+    back= ()=>{
+        this.props.history.goBack()
+    }
+    forward = ()=>{
+        this.props.history.goForward()
+    }
     render() { 
         return (
-        <ul>
+        <div>
+            <div>
+            <ul>
             {
                 this.state.messages.map((m,index)=>
                     <li key={index}>
-                        <a href="?">{m.title}</a>
+                        <NavLink to={`/home/message/messagedetail/${m.id}`}>{m.title}</NavLink>
+                        <button onClick={() =>this.showDetails(m.id)}>push查看</button>
+                        <button onClick={() =>this.showDetails2(m.id)}>replace查看</button>
                     </li>
                 )
             }
         </ul>
+            </div>
+            <p>
+                <button onClick={this.back}>回退</button>
+                <button onClick={this.forward}>前进</button>
+            </p>
+            <div>
+            <Route path='/home/message/messagedetail/:id' component={MessageDeatil}></Route> 
+            </div>
+        </div>
         );
     }
 }

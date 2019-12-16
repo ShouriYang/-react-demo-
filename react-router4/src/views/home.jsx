@@ -18,11 +18,13 @@ class Home extends Component {
                             <MyNavLink to='/home/message'>message</MyNavLink>
                         </li>
                     </ul>
+                    <div>
                     <Switch>
                                 <Route path='/home/news' component={News}></Route>
                                 <Route path='/home/message' component={Message}></Route>
                                 <Redirect to='/home/news'></Redirect>
                     </Switch>
+                    </div>
                 </div>
             </div>
          );
