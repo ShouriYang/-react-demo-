@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
-import * as actions from '../redux/actions'
-class App extends Component {
+import {PropTypes} from 'prop-types'
+class Counter extends Component {
   state = {
     selectValue: 0
   };
+  static propTypes = {
+    count : PropTypes.number.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired
+  }
   increment = () => {
     //1.得到选择增加数量
     const number = this.state.selectValue * 1;
-    console.log(number)
     //2.调用store的方法更新状态
-    this.props.store.dispatch(actions.increment(number));
+    this.props.increment(number)
   };
   decrement = () => {
     //1.得到选择增加数量
     const number = this.state.selectValue * 1;
     //2.调用store的方法更新状态
-    this.props.store.dispatch(actions.decrement(number));
+    this.props.decrement(number)
+
   };
   incrementIfOdd = () => {
     //1.得到选择增加数量
     const number = this.state.selectValue * 1;
     //2.得到原本的count状态
-    const count = this.props.store.getState();
+    const {count}= this.props;
     //3.满足调教才更新状态
     if (count % 2 === 1) {
-      this.props.store.dispatch(actions.increment(number));
+      this.props.increment(number)
     }
   };
   incrementAsync = () => {
@@ -33,7 +38,7 @@ class App extends Component {
     //启动定时器
     setTimeout(() => {
       //3.更新状态
-      this.props.store.dispatch(actions.increment(number));
+      this.props.increment(number)
     }, 1000);
   };
   handleSelect = event => {
@@ -41,7 +46,7 @@ class App extends Component {
     this.setState({ selectValue });
   };
   render() {
-    const count= this.props.store.getState();
+    const {count}= this.props;
     return (
       <div>
         <p> click {count} times</p>
@@ -63,4 +68,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Counter
+
