@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 目录解读
 
-## Available Scripts
+该目录是通过执行命令：create-react-app (react-cli) 创建的目录
 
-In the project directory, you can run:
+1. **public**：存放bootstrap等公共文件
 
-### `npm start`
+2. **src**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   1）src：react-redux实现动态添加删除评论
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+   2）src-comment-react：纯react实现动态添加删除评论
 
-### `npm test`
+   3）src-react：纯react实现redux官网中对select框的+ -计算等操作
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   4）src-redux：redux实现redux官网中对select框的+ -计算等操作
 
-### `npm run build`
+   5）src-react-redux：使用react-redux插件实现redux官网中对select框的+ -计算等操作(降低代码耦合度)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   6）src-redux-thunk：使用thunk和中间件函数实现redux可以进行异步操作(redux默认不支持异步操作)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+3. 可以通过执行以下命令运行文件
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```javascript
+   npm install
+   npm start
+   ```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+4. 可以将**src-开头**的文件夹改名为**src**然后运行项目
